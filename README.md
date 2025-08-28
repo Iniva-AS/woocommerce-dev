@@ -33,7 +33,6 @@ services:
       MARIADB_ROOT_PASSWORD: foobar
 
   woo_wordpress:
-    build: ./wordpress
     image: iniva/woocommerce-dev-wordpress:latest
     ports:
       - 8080:80
@@ -55,8 +54,8 @@ Creating a new .sql dump to load into the mariadb image:
 docker exec -it woo_maria_db mysqldump -h 127.0.0.1 -u root -pfoobar exampledb > mariadb/init.sql
 ```
 
-Building the images:
+Building and pushing the image:
 
 ```bash
-
+make deploy
 ```
