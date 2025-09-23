@@ -54,8 +54,17 @@ Creating a new .sql dump to load into the mariadb image:
 docker exec -it woo_maria_db mysqldump -h 127.0.0.1 -u root -pfoobar exampledb > mariadb/init.sql
 ```
 
-Building and pushing the image:
+Building and pushing the images with version tagging:
 
 ```bash
-make deploy
+# Deploy with a specific version (will tag and push both VERSION and latest)
+make deploy VERSION=x.x.x
+
+# Example:
+make deploy VERSION=10.2.1
 ```
+
+This will:
+- Build and tag both mariadb and wordpress images with the specified version
+- Also tag both images as `latest`
+- Push all tags (version + latest) to the registry
